@@ -14,6 +14,8 @@ The `Python quality` workflow runs five independent jobs. Every selected require
 
 Cognitive complexity 15 passes; 16 fails. McCabe complexity 10 passes; 11 fails. These limits use the tools' documented defaults. [complexipy threshold](https://complexipy.com/usage-guide/#setting-complexity-threshold), [Ruff threshold](https://docs.astral.sh/ruff/settings/#lint_mccabe_max-complexity).
 
+For actual diagnostics and repaired code, see [the iParq examples](../explanation/iparq-examples.md).
+
 ## Ruff rules
 
 | Selection | Checks |

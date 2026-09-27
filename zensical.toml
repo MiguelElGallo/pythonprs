@@ -27,6 +27,7 @@ nav = [
     { "Explanation" = [
         { "How the checks work" = "explanation/how-checks-work.md" },
         { "Docstrings and types" = "explanation/docstrings-and-types.md" },
+        { "Real examples from iParq" = "explanation/iparq-examples.md" },
     ] },
     { "Maintainer record" = [
         { "Tool research and implementation" = "maintainers/research-and-plan.md" },

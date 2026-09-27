@@ -18,6 +18,7 @@ uv run --no-sync python -m scripts.quality all
 - [Add them to an existing project](docs/how-to/add-github-actions.md)
 - [Require passing checks before merging](docs/how-to/require-checks.md)
 - [Look up limits and tool versions](docs/reference/checks.md)
+- [See real findings and repairs from iParq](docs/explanation/iparq-examples.md)
 
 The documentation uses [Zensical](https://zensical.org/) and publishes through GitHub Pages. To preview it:
 
