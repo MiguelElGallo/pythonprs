@@ -63,8 +63,8 @@ Negative tests require a named diagnostic as well as exit status 1, so an unrela
 
 | Component | Pinned version | Primary reference |
 | --- | --- | --- |
-| Python | 3.12 | [`.python-version`](../.python-version) |
-| uv | 0.12.17 | [Workflow setup](../.github/workflows/python-quality.yml) |
+| Python | 3.12 | [`.python-version`](https://github.com/MiguelElGallo/pythonprs/blob/main/.python-version) |
+| uv | 0.12.17 | [Workflow setup](https://github.com/MiguelElGallo/pythonprs/blob/main/.github/workflows/python-quality.yml) |
 | complexipy | 8.0.1 | [Published release](https://pypi.org/project/complexipy/8.0.1/) |
 | Ruff | 0.16.9 | [Published release](https://pypi.org/project/ruff/0.16.9/) |
 | Pyrefly | 1.3.1 | [Published release](https://pypi.org/project/pyrefly/1.3.1/) |
@@ -72,12 +72,14 @@ Negative tests require a named diagnostic as well as exit status 1, so an unrela
 | pytest | 9.1.1 | [Published release](https://pypi.org/project/pytest/9.1.1/) |
 | ty, available for development validation | 0.0.84 | [Published release](https://pypi.org/project/ty/0.0.84/) |
 
-The [`Python quality` workflow](../.github/workflows/python-quality.yml) runs `uv sync --locked` before its selected gate. `fail-fast: false` preserves results from the other matrix jobs when one fails. The required check names are `Quality (complexity)`, `Quality (ruff)`, `Quality (types)`, `Quality (docstrings)`, and `Quality (tests)`.
+The [`Python quality` workflow](https://github.com/MiguelElGallo/pythonprs/blob/main/.github/workflows/python-quality.yml) runs `uv sync --locked` before its selected gate. `fail-fast: false` preserves results from the other matrix jobs when one fails. The required check names are `Quality (complexity)`, `Quality (ruff)`, `Quality (types)`, `Quality (docstrings)`, and `Quality (tests)`.
 
-GitHub checks block merging only when repository protection or a ruleset requires them. [GitHub status-check requirements](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches#require-status-checks-before-merging). This task prepares local files and tests; publishing and changing those remote settings are separate actions.
+GitHub checks block merging only when repository protection or a ruleset requires them. [GitHub status-check requirements](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches#require-status-checks-before-merging). The implementation was subsequently committed and pushed at the user's request; branch enforcement remains a repository setting described in the [required-check guide](../how-to/require-checks.md).
 
 ## Validation completed
 
 All five gates passed locally using the locked Python 3.12 environment, including a run with `GITHUB_ACTIONS=true` to exercise GitHub annotation output. The suite passed **78 tests** using **13 text fixtures**. Actual CLI tests verified cognitive scores 15/16 and McCabe scores 10/11, named type errors, missing/short documentation, suppression resistance, and root/new/hidden/gitignored file discovery. Configuration overrides and terminated tools also produced blocking results.
 
-Interrogate reported 100% coverage for all 55 objects; direct AST inspection found 47 functions across 7 Python files with no documentation violations. Ruff lint and formatting, Pyrefly, `ty check`, `actionlint`, locked dependency synchronization, and whitespace checks passed. These are local results; a hosted GitHub Actions run has not been performed because the implementation has not been pushed.
+Interrogate reported 100% coverage for all 55 objects; direct AST inspection found 47 functions across 7 Python files with no documentation violations. Ruff lint and formatting, Pyrefly, `ty check`, `actionlint`, locked dependency synchronization, and whitespace checks passed.
+
+Commit `4c99161c448e94e123148c2a53fb3b3f2fea70e3` published the implementation to `MiguelElGallo/pythonprs`. All five hosted quality jobs passed in [GitHub Actions run 36311260681](https://github.com/MiguelElGallo/pythonprs/actions/runs/36311260681). Later documentation work adds the Zensical dependency and a separate Pages workflow; its review evidence is in the [documentation review record](documentation-review.md).

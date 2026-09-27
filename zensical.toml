@@ -1,0 +1,63 @@
+[project]
+site_name = "pythonprs"
+site_description = "Learn, configure, and understand blocking Python checks for GitHub pull requests."
+site_url = "https://miguelelgallo.github.io/pythonprs/"
+repo_url = "https://github.com/MiguelElGallo/pythonprs"
+repo_name = "MiguelElGallo/pythonprs"
+docs_dir = "docs"
+site_dir = "site"
+extra_css = ["stylesheets/extra.css"]
+nav = [
+    { "Start here" = "index.md" },
+    { "Tutorials" = [
+        { "Your first local check" = "tutorials/first-check.md" },
+        { "Your first GitHub run" = "tutorials/first-github-run.md" },
+    ] },
+    { "How-to guides" = [
+        { "Add GitHub Actions" = "how-to/add-github-actions.md" },
+        { "Require passing checks" = "how-to/require-checks.md" },
+        { "Fix a failed check" = "how-to/fix-failed-checks.md" },
+        { "Publish documentation" = "how-to/publish-documentation.md" },
+    ] },
+    { "Reference" = [
+        { "Check requirements" = "reference/checks.md" },
+        { "Configuration" = "reference/configuration.md" },
+        { "Commands" = "reference/commands.md" },
+    ] },
+    { "Explanation" = [
+        { "How the checks work" = "explanation/how-checks-work.md" },
+        { "Docstrings and types" = "explanation/docstrings-and-types.md" },
+    ] },
+    { "Maintainer record" = [
+        { "Tool research and implementation" = "maintainers/research-and-plan.md" },
+        { "Documentation reviews" = "maintainers/documentation-review.md" },
+    ] },
+]
+
+[project.theme]
+variant = "modern"
+features = [
+    "navigation.tabs", "navigation.sections", "navigation.expand",
+    "navigation.path", "navigation.footer", "navigation.top", "content.code.copy",
+]
+icon.logo = "lucide/circle-check"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: light)"
+scheme = "default"
+primary = "teal"
+accent = "teal"
+toggle.icon = "lucide/sun"
+toggle.name = "Switch to dark mode"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: dark)"
+scheme = "slate"
+primary = "teal"
+accent = "teal"
+toggle.icon = "lucide/moon"
+toggle.name = "Switch to light mode"
+
+[project.validation]
+invalid_links = true
+invalid_link_anchors = true

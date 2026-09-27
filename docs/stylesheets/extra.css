@@ -1,0 +1,56 @@
+/* Keep the modern theme readable, with a restrained teal accent. */
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: #007f73;
+  --md-accent-fg-color: #007f73;
+  --md-accent-fg-color--transparent: #007f730d;
+  --md-typeset-a-color: #007f73;
+}
+
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #72dacb;
+  --md-accent-fg-color: #72dacb;
+  --md-accent-fg-color--transparent: #72dacb0d;
+  --md-typeset-a-color: #72dacb;
+}
+
+.md-typeset h1 {
+  font-weight: 750;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+.md-typeset h2 {
+  font-weight: 650;
+  letter-spacing: -0.015em;
+}
+
+.md-typeset .lead {
+  color: var(--md-default-fg-color);
+  font-size: 1.12em;
+  line-height: 1.65;
+  max-width: 44rem;
+}
+
+.md-typeset .grid.cards.start-cards > ul > li {
+  border-radius: 0.8rem;
+  border-top: 3px solid var(--md-primary-fg-color);
+  padding: 1.1rem;
+}
+
+.md-typeset .grid.cards.start-cards > ul > li > p:first-child {
+  font-size: 1.05em;
+}
+
+.md-typeset .grid.cards.start-cards > ul > li a {
+  font-weight: 600;
+}
+
+.md-typeset pre > code {
+  border-radius: 0.45rem;
+}
+
+.md-typeset a:focus-visible {
+  outline: 2px solid var(--md-primary-fg-color);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
