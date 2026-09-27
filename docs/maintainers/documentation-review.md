@@ -6,7 +6,7 @@ Review date: 27 September 2026. This record tracks review of the documentation a
 
 The site uses the four reader needs in [Diátaxis](https://diataxis.fr/): guided learning, completing tasks, looking up facts, and understanding concepts. Tutorial progression and reference tables were informed by the [FastAPI type tutorial](https://fastapi.tiangolo.com/python-types/) and [FastAPI API reference](https://fastapi.tiangolo.com/reference/fastapi/). Their prose was not copied.
 
-Three independent subagent passes review the written documentation in sequence. Revisions from each pass are applied before the next pass. The review areas are information architecture, teaching clarity, and technical accuracy with command reproduction.
+The original documentation received three independent subagent reviews in sequence. Revisions from each pass were applied before the next pass. The review areas were information architecture, teaching clarity, and technical accuracy with command reproduction.
 
 ## Pass 1: information architecture
 
@@ -52,3 +52,30 @@ Browser inspection verified the actual light primary, accent, and link color as 
 The root checkout passed all five quality gates with GitHub annotation output enabled, including 78 tests. `ty check`, both workflows' `actionlint` checks, locked dependency synchronization, and whitespace checks passed. The Zensical clean strict build passed; generated links and assets across all 14 authored pages were checked.
 
 The Pages site is configured to use GitHub Actions at <https://miguelelgallo.github.io/pythonprs/>. The deployment workflow publishes only the named repository's `main` branch after a successful site build. Pull requests build without publishing. The Actions deployment record is the source of truth for publication status.
+
+## iParq examples: three review passes
+
+On 27 September 2026, [real examples from iParq](../explanation/iparq-examples.md) were added using its saved baseline and repaired source revisions. This addition received three sequential author reviews.
+
+### Pass 1: Diátaxis and reader journeys
+
+The examples explain what findings mean, so they belong in **Explanation**. Exact policy remains in **Reference**, and repair commands remain in the **How-to guide**. The page is reachable from the explanation navigation, homepage, README, requirements page, and each relevant section of the repair guide.
+
+### Pass 2: clarity and example scope
+
+Each example identifies the diagnostic, shows source before and after repair, and states the measured result. The page distinguishes whole-function complexity scores from partial code excerpts. Parquet terms were simplified, and the roles of the AST checker and standard output were explained. The docstring example makes both minimums and the first-paragraph boundary explicit.
+
+### Pass 3: source accuracy and reproduction
+
+Full source files from iParq commits `51dc01d357f923f32a8fd674504906e86a253afe` and `7fbda13d2cb35cecd06a235683e764adcfa1336f` were inspected in temporary files with this repository's pinned tools:
+
+- Ruff measured `inspect` McCabe complexity at **14 before / 8 after**. The configured maximum of 10 rejected the original and accepted the repaired source.
+- complexipy measured `inspect` at **28 / 13** and `print_min_max_statistics` at **49 / 11**. Every function in the repaired source, including extracted helpers, met the maximum of 15.
+- The project AST checker measured `output_json` summaries at **7 words / 41 characters** and **12 words / 62 characters**. It reported `DOC002` only for the original summary.
+- All seven Python excerpts were parsed and checked against the linked revisions; all three diagnostic excerpts matched the saved baseline output. The original `inspect` source link was extended to include its final branches.
+
+The dated examples link to complete commit hashes, preserving their provenance as iParq changes. The repair report supplies the original behavior-validation evidence.
+
+### Documentation validation
+
+`uv run --no-sync zensical build --clean --strict` and `git diff --check` passed. Generated HTML checks verified 163 relative links across five affected pages, including all three example anchors linked by the repair guide. The README entry, site navigation, and example page's canonical URL were also verified.

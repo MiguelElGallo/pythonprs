@@ -12,6 +12,8 @@ uv run --no-sync python -m scripts.quality complexity
 
 Find the function reported above the [cognitive complexity limit](../reference/checks.md). Reduce nesting with an early return, split distinct tasks into named functions, or simplify repeated decisions. Preserve the behavior with application tests, then rerun the check.
 
+The [iParq statistics example](../explanation/iparq-examples.md#cognitive-complexity-decisions-inside-decisions) shows a nested function before and after this kind of repair.
+
 ## Ruff lint or formatting
 
 ```sh
@@ -19,6 +21,8 @@ uv run --no-sync python -m scripts.quality ruff
 ```
 
 For `C901`, simplify the reported function's decision paths. For other rule codes, follow the diagnostic: for example, remove an unused import or add a missing type annotation.
+
+See [iParq's McCabe finding](../explanation/iparq-examples.md#mccabe-complexity-too-many-decision-paths) for an actual `C901` diagnostic and its repair.
 
 If the output says a file **would be reformatted**, apply formatting to that file and review the result:
 
@@ -60,6 +64,8 @@ def increment(value: int) -> int:
 ```
 
 Long `Args` or `Returns` sections after a blank line cannot make up for a short first paragraph. Each function needs its own docstring, including private functions, constructors, and overrides.
+
+The [iParq docstring example](../explanation/iparq-examples.md#docstrings-enough-characters-too-few-words) shows `DOC002` when the character minimum passes but the word minimum fails.
 
 Interrogate may separately report missing documentation coverage. Fix that reported definition too; the job requires both tools to pass.
 
